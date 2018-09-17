@@ -1,0 +1,47 @@
+<body>
+
+<div id="main">
+    <img src="main-img.jpg">
+</div>
+
+
+<div id="article_wrap">
+
+    <div id="article_list">
+
+        <div>
+          <% @posts.each do |post| %>
+            <h2>
+              <div class="title">
+                <%= link_to("#{post.title}","/posts/#{post.id}") %>
+                <p><%= post.updated_at %><%= post.user_id %></p>
+              </div>
+            </h2>
+              <% if current_user.id == post.user_id %>
+                  <%= link_to("編集","/posts/#{post.id}/edit") %>
+                  <%= link_to("削除", "/posts/#{post.id}/destroy", method: :delete) %>
+              <% end %>
+          <% end %>
+        </div>
+    </div>
+
+    <div id="sidebar">
+
+        <h2>★PV数ランキング</h2>
+        <ul>
+          <% @hi_posts.each do |hi_post| %>
+            <li><%= link_to("#{hi_post.title}","/posts/#{hi_post.id}") %><span></span></li>
+          <% end %>
+        </ul>
+    </div>
+    <div class="clear"></div>
+
+
+<footer>
+    <div id="footer_inner">
+        <p>Copyright RailsCamp 2015 All Rights Reserved</p>
+    </div>
+</footer>
+
+</body>
+</html>

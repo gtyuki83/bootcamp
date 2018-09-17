@@ -1,0 +1,9 @@
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+<%= form_for(@post,url: posts_path) do |f|  %>
+<div class="form">
+    <%= f.text_field :title %>
+    <%= f.text_area :body %>
+    <%= f.submit "送信" %>
+</div>
+<% end %>

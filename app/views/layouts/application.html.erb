@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head lang="ja">
+        <meta charset="UTF-8">
+        <title>Rails Camp Blog</title>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <!-- <stylesheet_link_tag "application" type="text.css" media="screen"> -->
+    </head>
+
+  <body>
+
+    <header>
+        <p id="logo"><a href="/posts">RailsCamp<span>Blog</span></a></p>
+          <div id="nav">
+            <ul>
+              <% if user_signed_in? %>
+                <li><a href="/posts">トップ</a></li>
+                <li><a href="/posts/new">新規投稿</a></li>
+                <li><a href="/users/sign_out">ログアウト</a></li>
+              <% else %>
+                <li><a href="/users/sign_in">ログイン</a></li>
+                <li><a href="/users/sign_up">新規登録</a></li>
+                <div class="clear"></div>
+              <% end %>
+            </ul>
+          </div>
+        <div class="clear"></div>
+    </header>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>
